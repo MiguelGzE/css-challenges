@@ -1,0 +1,45 @@
+:root {
+    --bg-color: #161616;
+    --bg-secondary: rgb(92, 92, 92);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    height: 90%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 25px;
+}
+
+.link__list {
+    display: inherit;
+}
+
+.link__item {
+    color: white;
+    text-decoration: none;
+    background-color: var(--bg-secondary);
+    padding: 1rem 2.5rem;
+    border-radius: 25px;
+    font-size: 1.25rem;
+}
