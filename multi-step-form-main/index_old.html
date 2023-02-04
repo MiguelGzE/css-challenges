@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Multi-step form</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <main class="main">
+    <section class="sidebar">
+      <ul class="sidebar__nav" id="sidebar-nav">
+        <li class="sidebar__link" id="step-1">
+          <span class="sidebar__circle">1</span>
+          <div class="sidebar__titles">
+            <p class="sidebar__subtitle">Step 1</p>
+            <p class="sidebar__title">Your info</p>
+          </div>
+        </li>
+        <li class="sidebar__link" id="step-2">
+          <span class="sidebar__circle">2</span>
+          <div class="sidebar__titles">
+            <p class="sidebar__subtitle">Step 2</p>
+            <p class="sidebar__title">Select plan</p>
+          </div>
+        </li>
+        <li class="sidebar__link" id="step-3">
+          <span class="sidebar__circle">3</span>
+          <div class="sidebar__titles">
+            <p class="sidebar__subtitle">Step 3</p>
+            <p class="sidebar__title">Add-ons</p>
+          </div>
+        </li>
+        <li class="sidebar__link" id="step-4">
+          <span class="sidebar__circle">4</span>
+          <div class="sidebar__titles">
+            <p class="sidebar__subtitle">Step 4</p>
+            <p class="sidebar__title">Summary</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="card" id="card-template">
+      <!-- 
+      <div class="card__personal" id="card-personal-info">
+        <h1 class="card__title">Personal info</h1>
+        <p class="card__paragraph">Please provide your name, email address, and phone number.</p>
+        <form action="" class="card-form">
+          <div class="card-form__group"><label for="" class="card-form__group__label">Name</label><input type="text"
+              placeholder="e.g. Stephen King" class="card-form__group__input"></div>
+          <div class="card-form__group"><label for="" class="card-form__group__label">Email Address</label><input
+              type="email" placeholder="e.g. stephenking@lorem.com" class="card-form__group__input"></div>
+          <div class="card-form__group"><label for="" class="card-form__group__label">Phone Number</label><input
+              type="text" placeholder="e.g. +1 234 567 890" class="card-form__group__input"></div>
+        </form>
+      </div> -->
+
+      <!-- <div class="card__select-plan">
+        <h1 class="card__title">Select your plan</h1>
+        <p class="card__paragraph">You have the option of monthly or yearly billing.</p>
+        <form action="" class="card-form card-form--plan" id="card-plan">
+          <div class="card-form__plan" id="arcade-plan">
+            <img src="assets/images/icon-arcade.svg" alt="">
+            <div class="card-form__plan__texts">
+              <p class="card-form__plan__title">Arcade</p>
+              <p class="card-form__plan__price">$9/mo</p>
+              <p class="card-form__plan__price-year">2 months free</p>
+            </div>
+          </div>
+          <div class="card-form__plan" id="advanced-plan">
+            <img src="assets/images/icon-advanced.svg" alt="">
+            <div class="card-form__plan__texts">
+              <p class="card-form__plan__title">Advanced</p>
+              <p class="card-form__plan__price">$12/mo</p>
+              <p class="card-form__plan__price-year">2 months free</p>
+            </div>
+          </div>
+          <div class="card-form__plan" id="pro-plan">
+            <img src="assets/images/icon-pro.svg" alt="">
+            <div class="card-form__plan__texts">
+              <p class="card-form__plan__title">Pro</p>
+              <p class="card-form__plan__price">$15/mo</p>
+              <p class="card-form__plan__price-year">2 months free</p>
+            </div>
+          </div>
+          <div class="card-form__select-plan">
+            <span class="monthly-plan">Monthly</span>
+            <label class="select-plan__switch">
+              <input class="switch__checkbox" id="checkbox-plan" type="checkbox">
+              <span class="switch__slider round"></span>
+            </label>
+            <span class="yearly-plan">Yearly</span>
+          </div>
+        </form>
+      </div> -->
+    </section>
+    <section class="footer">
+    </section>
+
+    <a href="javascript:void(0)" id="go-back" class="footer__button card-form__cta--back">Go Back</a>
+    <a href="javascript:void(0)" id="next-step" class="footer__button card-form__cta">Next Step</a>
+  </main>
+
+  <!-- Step 2 start -->
+
+  <!-- Select your plan
+  You have the option of monthly or yearly billing.
+
+  Arcade
+  $9/mo
+
+  Advanced
+  $12/mo
+
+  Pro
+  $15/mo
+
+  Monthly
+  Yearly
+
+  Go Back
+  Next Step -->
+
+  <!-- Step 2 end -->
+
+  <!-- Step 3 start -->
+
+  <!-- Pick add-ons
+  Add-ons help enhance your gaming experience.
+
+  Online service
+  Access to multiplayer games
+  +$1/mo
+
+  Larger storage
+  Extra 1TB of cloud save
+  +$2/mo
+
+  Customizable Profile
+  Custom theme on your profile
+  +$2/mo
+
+  Go Back
+  Next Step -->
+
+  <!-- Step 3 end -->
+
+  <!-- Step 4 start -->
+
+  <!-- Finishing up
+  Double-check everything looks OK before confirming. -->
+
+  <!-- Dynamically add subscription and add-on selections here -->
+
+  <!-- Total (per month/year)
+
+  Go Back
+  Confirm -->
+
+  <!-- Step 4 end -->
+
+  <!-- Step 5 start -->
+
+  <!-- Thank you!
+
+  Thanks for confirming your subscription! We hope you have fun 
+  using our platform. If you ever need support, please feel free 
+  to email us at support@loremgaming.com. -->
+
+  <!-- Step 5 end -->
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>
