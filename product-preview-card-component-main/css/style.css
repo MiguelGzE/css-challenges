@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
 
 :root {
+    --very-dark-cyan: hsl(156, 44%, 18%);
     --dark-cyan: hsl(158, 36%, 37%);
     --cream: hsl(30, 38%, 92%);
 
@@ -112,6 +113,10 @@ body {
     font-weight: 500;
     font-size: 1rem;
     text-decoration: none;
+}
+
+.card__cta:hover, .card__cta:focus {
+    background-color: var(--very-dark-cyan);
 }
 
 .card__price--discount {
