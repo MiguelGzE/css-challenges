@@ -288,8 +288,8 @@ const main = (function () {
         let indexCurrentStep = _currentStep - 1;
         $(".l-list__item").eq(indexCurrentStep).addClass('is-active');
         let STEP_DATA = getStepData();
-        let url = 'http://localhost/ejercicios_css/retos-frontend/multi-step-form-main/php'
-        // url = 'php';
+        // let url = 'http://localhost/ejercicios_css/retos-frontend/multi-step-form-main/php'
+        let url = 'php';
         $.ajax({
             url: url + '/get_template.php',
             type: 'POST',
