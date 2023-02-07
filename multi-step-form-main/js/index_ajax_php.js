@@ -21,31 +21,30 @@ $(function () {
 
     $('#card').on('click', '#card-plan .c-container--plan', function () {
         let planIdSelected = $(this).attr('id').split('plan-')[1];
-        let planData = MAIN.getPlanData();
+        let planData = main.getPlanData();
         if (planData && planIdSelected === planData['plan_selected']) {
             return;
         }
         removeClassOfElements('c-container--plan', 'is-selected');
         $(this).addClass('is-selected');
         planData['plan_selected'] = planIdSelected;
-        MAIN.setPlanData(planData);
+        main.setPlanData(planData);
     });
 
     $('#card').on('change', '#card-plan #checkbox-plan', function () {
         $('#card-plan').toggleClass('is-yearly-plan');
-        const IS_YEARLY_PLAN = $(this).is(":checked");
-        let typePlanSelected = IS_YEARLY_PLAN ? 'yearly' : 'monthly';
-        let planData = MAIN.getPlanData();
+        let typePlanSelected = $(this).is(":checked") ? 'yearly' : 'monthly';
+        let planData = main.getPlanData();
         planData['type_plan_selected'] = typePlanSelected;
-        planData['is_yearly_plan'] = IS_YEARLY_PLAN;
-        MAIN.setTypePlanSelected(typePlanSelected);
-        MAIN.setPlanData(planData);
+        main.setTypePlanSelected(typePlanSelected);
+        main.setPlanData(planData);
         let listPlans = $('#card-plan').children('.l-form__body').children('.c-container--plan');
+        const PRICE_KEY = $('#card-plan').hasClass('is-yearly-plan') ? 'yr' : 'mo';
         listPlans.each(function () {
             const PLAN_ID = $(this).attr('id').split('plan-')[1];
-            const PLAN = MAP_PLANS.get(PLAN_ID);
-            const PRICE = getPlanPrice(PLAN['price_monthly']);
-            $(this).find('.c-texts__subtitle').text(PRICE['price_string']);
+            const PLAN_PRICES = MAP_PLAN_PRICES.get(PLAN_ID);
+            const PRICE = PLAN_PRICES[PRICE_KEY];
+            $(this).find('.c-texts__subtitle').text(`$${PRICE}/${PRICE_KEY}`);
         });
     });
 
@@ -54,23 +53,23 @@ $(function () {
     });
 
     $('#next-step').on('click', function () {
-        let step = MAIN.getCurrentStep();
+        let step = main.getCurrentStep();
         let isValid = true;
         if (step <= 2) {
             isValid = validateByStep(step);
         } else if (step == 3) {
             saveAddOnsSelected();
         }
+
         if (!isValid) {
             return;
         }
-
         step += 1;
         changeStep(step);
     });
 
     $('#go-back').on('click', function () {
-        let step = MAIN.getCurrentStep();
+        let step = main.getCurrentStep();
         step -= 1;
         changeStep(step);
     });
@@ -83,7 +82,7 @@ $(function () {
 });
 
 function saveAddOnsSelected() {
-    let addOnsData = MAIN.getAddOnsData();
+    let addOnsData = main.getAddOnsData();
     addOnsData['list_add_ons_selected'] = [];
     let listAddOns = $('#card-pick-add-on').children('.l-form__body').children('.c-container--add-on');
     listAddOns.each(function () {
@@ -92,11 +91,11 @@ function saveAddOnsSelected() {
             addOnsData['list_add_ons_selected'].push(ADD_ON_ID);
         }
     });
-    MAIN.setAddOnsData(addOnsData);
+    main.setAddOnsData(addOnsData);
 }
 
 function validateSelectedPlan() {
-    let planData = MAIN.getPlanData();
+    let planData = main.getPlanData();
     return planData && planData['plan_selected'];
 }
 
@@ -111,6 +110,7 @@ function validatePersonalInfo() {
         return phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
     };
 
+
     let arrayInputsPersonalInfo = $("form").serializeArray();
     let personalInfo = {};
     $.each(arrayInputsPersonalInfo, function (i, field) {
@@ -118,7 +118,7 @@ function validatePersonalInfo() {
     });
 
     let validName, validEmail, validPhone = false;
-    validName = (personalInfo && personalInfo['name'] != '' && personalInfo['name'] != null);
+    validName = (personalInfo['name'] != '' && personalInfo['name'] != null);
     if (!validName) {
         setTextError('name', 'Invalid name');
     }
@@ -139,7 +139,7 @@ function validatePersonalInfo() {
         return false;
     }
 
-    MAIN.setPersonalInfoData(personalInfo);
+    main.setPersonalInfoData(personalInfo);
     return true;
 }
 
@@ -165,9 +165,9 @@ function validateByStep(step) {
 }
 
 function changeStep(newStep) {
-    MAIN.setCurrentStep(newStep);
+    main.setCurrentStep(newStep);
     removeClassOfElements('l-list__item', 'is-active');
-    MAIN.setStepHtmlTemplate();
+    main.setStepHtmlTemplate();
 }
 
 function removeClassOfElements(elements, className) {
@@ -176,50 +176,18 @@ function removeClassOfElements(elements, className) {
     });
 }
 
-const MAP_PLANS = new Map([
-    ['arcade', { icon: 'icon-arcade.svg', title: 'Arcade', price_monthly: 9 }],
-    ['advanced', { icon: 'icon-advanced.svg', title: 'Advanced', price_monthly: 12 }],
-    ['pro', { icon: 'icon-pro.svg', title: 'Pro', price_monthly: 15 }],
+const MAP_PLAN_PRICES = new Map([
+    ['arcade', { mo: 9, yr: 90 }],
+    ['advanced', { mo: 12, yr: 120 }],
+    ['pro', { mo: 15, yr: 150 }],
 ]);
 
-const MAP_ADD_ONS = new Map([
-    ['online-service', { title: 'Online service', paragraph: 'Access to multiplayer games', price_monthly: 1 }],
-    ['larger-storage', { title: 'Larger storage', paragraph: 'Extra 1TB of cloud save', price_monthly: 2 }],
-    ['customizable-profile', { title: 'Customizable profile', paragraph: 'Custom theme on your profile', price_monthly: 2 }],
-]);
-
-function getPlanPriceString(price, isYearlyPlan) {
-    const TYPE = isYearlyPlan ? 'yr' : 'mo';
-    return `$${price}/${TYPE}`;
-}
-
-function getPlanPrice(priceMonthly) {
-    const IS_YEARLY_PLAN = MAIN.getPlanData()['is_yearly_plan'];
-    let planPrice = { price: priceMonthly, price_string: getPlanPriceString(priceMonthly, IS_YEARLY_PLAN) };
-    if (!IS_YEARLY_PLAN) {
-        return planPrice;
-    }
-
-    let amountMonthsToBePaidPerYear = 10;
-    planPrice['price'] = priceMonthly * amountMonthsToBePaidPerYear;
-    planPrice['price_string'] = getPlanPriceString(planPrice['price'], IS_YEARLY_PLAN);
-    return planPrice;
-}
-
-function getDataSelectedPlan(planId) {
-    return MAP_PLANS.get(planId) ?? null;
-}
-
-function getDataAddOn(addOnId) {
-    return MAP_ADD_ONS.get(addOnId) ?? null;
-}
-
-const MAIN = (function () {
+const main = (function () {
     let _firstTemplate = 1;
     let _currentStep = _firstTemplate;
     let _personalInfoData = {};
     let _typePlanSelected = 'monthly';
-    let _planData = { plan_selected: null, type_plan_selected: _typePlanSelected, is_yearly_plan: false };
+    let _planData = { plan_selected: null, type_plan_selected: _typePlanSelected };
     let _addOnsData = { list_add_ons_selected: [] };
 
     const getCurrentStep = function () {
@@ -284,7 +252,6 @@ const MAIN = (function () {
         stepData = Object.assign(stepData, getDataVariableByCurrentStep());
         if (_currentStep > 2) {
             stepData = Object.assign(stepData, _planData);
-            stepData['is_yearly_plan'] = _typePlanSelected && _typePlanSelected === 'yearly' ? true : false;
         }
         if (_currentStep == 4) {
             stepData = Object.assign(stepData, _addOnsData);
@@ -320,10 +287,21 @@ const MAIN = (function () {
     const setStepHtmlTemplate = function () {
         let indexCurrentStep = _currentStep - 1;
         $(".l-list__item").eq(indexCurrentStep).addClass('is-active');
-        const STEP_DATA = getStepData();
-        let htmlTemplate = TEMPLATES.getHtml(STEP_DATA);
-        $('#card').html(htmlTemplate);
-        setStepFooter();
+        let STEP_DATA = getStepData();
+        // let url = 'http://localhost/ejercicios_css/retos-frontend/multi-step-form-main/php'
+        let url = 'php';
+        $.ajax({
+            url: url + '/get_template.php',
+            type: 'POST',
+            data: STEP_DATA,
+            dataType: 'html',
+            error: function () {
+            },
+            success: function (htmlTemplate) {
+                $('#card').html(htmlTemplate);
+                setStepFooter();
+            }
+        });
     }
 
     return {
@@ -341,4 +319,4 @@ const MAIN = (function () {
     }
 })();
 
-MAIN.setStepHtmlTemplate();
+main.setStepHtmlTemplate();
