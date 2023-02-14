@@ -1,0 +1,181 @@
+.c-container {
+    font-size: 16px;
+    width: 95%;
+    max-width: 350px;
+    min-height: max-content;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    gap: 2.5em;
+    padding-top: 0.85em;
+    color: var(--text-color);
+
+    .c-element-rounded {
+        display: grid;
+        place-items: center;
+        border-radius: var(--xxs-border-radius);
+        background-color: var(--bg-elements);
+    }
+
+    .c-container__header {
+        .c-element-rounded--button {
+            border: none;
+            height: 2.5em;
+            min-width: 7.5em;
+            padding: 0 1em;
+            box-shadow: var(--medium-box-shadow);
+            pointer-events: all;
+            color: var(--text-color);
+            font-weight: 300;
+            font-size: 0.8em;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .c-container__body {
+        margin-top: 1.25em;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5em;
+
+        .c-container__title {
+            margin-top: 0.75em;
+        }
+    }
+
+    .c-container__picture {
+        width: 100%;
+        min-height: 210px;
+        max-height: 210px;
+
+        .c-container__image {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .c-container__texts {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75em;
+        font-size: 0.9em;
+
+        &.c-container__texts--secondary {
+            margin-top: 1.25em;
+        }
+    }
+
+    .c-container__title {
+        font-size: 1.35em;
+    }
+
+    .c-container__text--bold {
+        font-weight: 600;
+    }
+
+    .c-container__footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1em;
+
+        .c-container__title {
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .c-border-countries {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5em;
+
+            .c-element-rounded {
+                height: 2em;
+                min-width: 7.25em;
+                padding: 0 1em;
+                width: auto;
+                font-size: 0.8em;
+                box-shadow: var(--light-box-shadow);
+            }
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 1440px) {
+    .c-container {
+        grid-template-rows: max-content 1fr;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 2.5em;
+
+        .c-container__body {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, max-content);
+            grid-template-areas:
+                "flag flag title title"
+                "flag flag main secondary"
+                "flag flag footer footer";
+
+            .c-container__picture {
+                grid-area: flag;
+                width: 85%;
+                min-height: 100%;
+                max-height: auto;
+                box-shadow: 0 0 20px 5px rgba(56, 56, 56, 0.05);
+
+                .c-container__image {
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    object-fit: cover;
+                    object-position: left;
+                }
+            }
+
+            .c-container__texts--main {
+                grid-area: main;
+                margin-top: 0;
+            }
+
+            .c-container__texts--secondary {
+                grid-area: secondary;
+                margin-top: 0;
+            }
+
+            .c-container__title {
+                grid-area: title;
+            }
+
+            .c-container__footer {
+                margin: 2.5em 0 2em;
+                grid-area: footer;
+                flex-flow: row wrap;
+                align-items: center;
+                gap: 0.75em;
+                .c-container__title {
+                    margin-top: 0;
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 2560px) {
+    .c-container {
+        font-size: 30px;
+    }
+}

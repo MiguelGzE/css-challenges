@@ -1,0 +1,66 @@
+@import "../styles/variables.scss";
+
+.c-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: var(--header-height);
+    box-shadow: 0px 3px 15px -12.5px black;
+    background-color: var(--bg-elements);
+
+    .l-list {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .l-list__item {
+            list-style: none;
+            color: var(--text-color);
+        }
+    }
+
+    .c-header__title {
+        font-weight: 800;
+        font-size: 0.9em;
+    }
+}
+
+.c-theme {
+    .c-theme__label {
+        display: flex;
+        align-items: center;
+        font-weight: 300;
+        font-size: 0.75em;
+        gap: 0.4em;
+        color: var(--text-color);
+        cursor: pointer;
+
+        .c-theme__input {
+            display: none;
+            pointer-events: none;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .c-header {
+        font-size: 22px;
+        .c-header__title {
+            font-size: 1em;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    .c-theme .c-theme__label {
+        font-size: 0.7em;
+    }
+}
+
+@media (min-width: 2560px) {
+    .c-header {
+        font-size: 32px;
+    }
+}

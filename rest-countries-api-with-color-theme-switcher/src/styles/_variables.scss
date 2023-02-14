@@ -1,0 +1,26 @@
+$dark-blue: hsl(209, 23%, 22%);
+/*(Dark Mode Elements) */
+$very-dark-blue: hsl(207, 26%, 17%);
+/*(Dark Mode Background) */
+$very-dark-blue-text: hsl(200, 15%, 8%);
+/*(Light Mode Text)*/
+$dark-gray: hsl(0, 0%, 52%);
+/*(Light Mode Input)*/
+$very-light-gray: hsl(0, 0%, 98%);
+/*(Light Mode Background)*/
+$white: hsl(0, 0%, 100%);
+/*(Dark Mode Text & Light Mode Elements)*/
+
+$bg-color: var($very-light-gray);
+$bg-elements: var($white);
+$text-color: var($very-dark-blue-text);
+$card-box-shadow: 0 0px 10px -1px rgb(233, 233, 233);
+
+$xs-border-radius: 5px;
+$sm-border-radius: 7.5px;
+$md-border-radius: 10px;
+$lg-border-radius: 15px;
+$xl-border-radius: 25px;
+
+// $header-height: 5rem;
+// $main-height: calc(100vh - $header-height);

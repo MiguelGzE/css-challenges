@@ -1,0 +1,166 @@
+.l-filter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    font-size: 14px;
+    color: var(--text-color);
+
+    .c-search {
+        width: 100%;
+        max-width: 34.3em;
+        display: flex;
+        border-radius: var(--xs-border-radius);
+        align-items: center;
+        padding: 0 2em;
+        gap: 1.5em;
+        height: 3.57em;
+        background-color: var(--bg-elements);
+        box-shadow: var(--light-box-shadow);
+
+        .c-search__icon {
+            color: var(--text-color);
+            font-size: 1.4em;
+        }
+
+        .c-search__input {
+            font-family: var(--main-font-family);
+            width: 75%;
+            height: auto;
+            outline: none;
+            border: none;
+            justify-self: end;
+            height: 100%;
+            background-color: transparent;
+            color: var(--text-color);
+            font-size: 0.95em;
+        }
+    }
+
+    .c-dropdown {
+        position: relative;
+        width: 14.486em;
+        height: 3.57em;
+        background-color: var(--bg-elements);
+        box-shadow: var(--light-box-shadow);
+        border-radius: var(--xs-border-radius);
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-weight: 300;
+
+        .c-dropdown_titles {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.75em;
+            font-size: 0.95em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .c-dropdown__icon {
+            transform: rotate(90deg);
+            font-size: 1.2em;
+        }
+
+        &:hover .c-dropdown__content {
+            transform: scaleY(100%);
+            z-index: 100;
+        }
+
+        .c-dropdown__content {
+            transform: scaleY(0%);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            margin-top: 0.25em;
+            top: 100%;
+            background-color: inherit;
+            border-radius: inherit;
+            padding: 1em 1.75em;
+            box-shadow: inherit;
+            transition: transform 120ms ease-in;
+            transform-origin: top;
+
+            .l-list {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+
+                .l-list__item {
+                    width: auto;
+                    font-size: 0.9em;
+                    padding: 0.3em 0;
+
+                    &:hover {
+                        cursor: pointer;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+::placeholder {
+    /* Most modern browsers support this now. */
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+
+@media (min-width: 1440px) {
+    .l-filter {
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 16px;
+
+        .c-dropdown {
+            width: 12.857em;
+            font-size: 1em;
+        }
+    }
+}
+
+@media (min-width: 2560px) {
+    .l-filter {
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 21px;
+    }
+}

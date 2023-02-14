@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+:root {
+  --dark-blue: hsl(210, 22%, 22%);
+  /*(Dark Mode Elements) */
+  --very-dark-blue: hsl(205, 26%, 17%);
+  /*(Dark Mode Background) */
+  --very-dark-blue-text: hsl(200, 15%, 8%);
+  /*(Light Mode Text)*/
+  --dark-gray: hsl(0, 0%, 52%);
+  /*(Light Mode Input)*/
+  --very-light-gray: hsl(0, 0%, 98%);
+  /*(Light Mode Background)*/
+  --white: hsl(0, 0%, 100%);
+  /*(Dark Mode Text & Light Mode Elements)*/
+
+  --bg-color: var(--very-light-gray);
+  --bg-elements: var(--white);
+  --text-color: var(--very-dark-blue-text);
+  --card-box-shadow: 0 0px 10px -1px rgba(0, 0, 0, 0.10);
+  --light-box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.281);
+  --medium-box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.459);
+  --strong-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.411);
+
+  --xxs-border-radius: 2.5px;
+  --xs-border-radius: 5px;
+  --sm-border-radius: 7.5px;
+  --md-border-radius: 10px;
+  --lg-border-radius: 15px;
+  --xl-border-radius: 25px;
+
+  --main-font-family: "Nunito Sans", sans-serif;
+  --min-width-desktop: 1440px;
+
+  --header-height: 5rem;
+  --main-height: calc(100vh -  var(var(--header-height)));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  font-family: var(--main-font-family);
+}
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+}
+
+.App.dark-mode {
+  --bg-color: var(--very-dark-blue);
+  --bg-elements: var(--dark-blue);
+  --text-color: var(--white);
+}
+
+@media (min-width: 1440px) {
+  .App.light-mode {
+    --bg-color: var(--white);
+  }
+}
+
+@media (min-width: 2560px) {
+  html, body {
+    font-size: 32px;
+  }
+
+  .App {
+    --header-height: 4rem;
+  }
+  
+}
