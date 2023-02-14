@@ -24,6 +24,7 @@ function Main() {
         })
     }
 
+    // eslint-disable-next-line
     const fetchData = useCallback(createFetchData('https://restcountries.com/v3.1'), []);
 
     useEffect(() => {
