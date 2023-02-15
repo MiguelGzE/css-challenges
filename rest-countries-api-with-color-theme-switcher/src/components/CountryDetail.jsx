@@ -19,7 +19,8 @@ function CountryDetail({ data, goBack }) {
     return (
         <div className="c-container">
             <div className="c-container__header">
-                <button className="c-element-rounded c-element-rounded--button" onClick={goBack}>Back</button>
+                <button className="c-element-rounded c-element-rounded--button" onClick={goBack}>
+                    <i className="c-element-icon fa-solid fa-arrow-left-long"></i> Back</button>
             </div>
             <div className="c-container__body">
                 <figure className="c-container__picture">

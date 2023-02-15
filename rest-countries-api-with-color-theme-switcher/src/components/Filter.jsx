@@ -8,14 +8,14 @@ function Filter({ filterBySearch, filterByRegion }) {
     return (
         <div className="l-filter">
             <div className="c-search">
-                <span className="c-search__icon">Q</span>
+                <span className="c-search__icon"><i className="fa-solid fa-magnifying-glass"></i></span>
                 <input className="c-search__input" type="text" name="" id="" placeholder="Search for a country..." onChange={(e) => filterBySearch(e.target.value)} />
             </div>
 
             <div className="c-dropdown">
                 <div className="c-dropdown_titles">
                     <p className="c-dropdown__title">Filter by Region</p>
-                    <span className="c-dropdown__icon">&gt;</span>
+                    <span className="c-dropdown__icon"><i className="fa-solid fa-caret-down"></i></span>
                 </div>
                 <div className="c-dropdown__content">
                     <ul className="l-list">

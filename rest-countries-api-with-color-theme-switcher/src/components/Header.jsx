@@ -13,7 +13,7 @@ function Header({ theme, toggleTheme }) {
                     <div className="c-theme">
                         <label className="c-theme__label" htmlFor="theme-checkbox">
                             <input className="c-theme__input" onChange={(event) => toggleTheme(event)} type="checkbox" name="theme" id="theme-checkbox" />
-                            <span className="c-theme__icon">O</span>
+                            <span className="c-theme__icon"><i className="fa-solid fa-moon"></i></span>
                             {themeLabel}
                         </label>
                     </div>

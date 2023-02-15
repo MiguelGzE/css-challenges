@@ -33,6 +33,16 @@
                 cursor: pointer;
             }
         }
+
+        .c-element-icon {
+            font-size: 1.25em;
+        }
+
+        .c-element-rounded--button {
+            display: flex;
+            place-content: center;
+            gap: 0.5em;
+        }
     }
 
     .c-container__body {
@@ -128,20 +138,25 @@
                 "flag flag title title"
                 "flag flag main secondary"
                 "flag flag footer footer";
+            gap: 2em 0;
 
             .c-container__picture {
+                position: relative;
                 grid-area: flag;
-                width: 85%;
-                min-height: 100%;
-                max-height: auto;
-                box-shadow: 0 0 20px 5px rgba(56, 56, 56, 0.05);
+                width: 100%;
+                min-height: 20.3125em;
+                max-height: 20.3125em;
+                align-self: center;
 
                 .c-container__image {
-                    width: 100%;
+                    position: absolute;
+                    width: 85%;
+                    max-width: 37.5em;
                     height: 100%;
                     background-repeat: no-repeat;
                     object-fit: cover;
-                    object-position: left;
+                    object-position: center;
+                    box-shadow: 0 0 20px 5px rgba(56, 56, 56, 0.05);
                 }
             }
 
@@ -157,6 +172,7 @@
 
             .c-container__title {
                 grid-area: title;
+                align-self: end;
             }
 
             .c-container__footer {
@@ -168,6 +184,7 @@
                 .c-container__title {
                     margin-top: 0;
                     font-size: 0.8em;
+                    align-self: center;
                 }
             }
         }
