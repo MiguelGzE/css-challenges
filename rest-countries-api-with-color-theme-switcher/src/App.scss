@@ -60,11 +60,11 @@ body {
   --text-color: var(--white);
 }
 
-@media (min-width: 1440px) {
-  .App.light-mode {
-    --bg-color: var(--white);
-  }
-}
+// @media (min-width: 1440px) {
+//   .App.light-mode {
+//     --bg-color: var(--white);
+//   }
+// }
 
 @media (min-width: 2560px) {
   html, body {
